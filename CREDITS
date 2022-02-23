@@ -1,0 +1,33 @@
+
+Joachim Metz <jbmetz at users.sourceforge.net>
+   Guymager can be configured to use the famous libewf for writing EWF images
+   and Guymager's own EWF module is based on Joachim's documentation. Without
+   Joachim's work on the EWF format, the Guymager project would probably never
+   have been started. Special thanks to Joachim as well for believing in the 
+   idea of parallelised compression.
+
+Michael Prokop <mika at debian.org>
+   Mika took care of correctly packaging Guymager and making it available in
+   the main repositories. Without him, the Guymager installation would have
+   remained the nightmare it was before. As well, many thanks to Mika for his
+   patience while answering my numerous questions about copyright and his
+   suggestions for giving the sources a GPL compliant shape.
+
+Erwin van Eijk <erwin.van.eijk at gmail.com>
+   Erwin not only had many good ideas for new Guymager features, but also
+   directly put them into working code which he shared in his feedbacks. Among
+   others, the job queue, the user field and the running statistics are based
+   on Erwin's work and ideas. Many thanks for this and for supporting the
+   spirit of open source.
+
+Wilhelm Spiegl
+   Software is only as good as it has been tested. Willi always played an
+   important role in this. Many thanks for his persistent testing and
+   detailed problem documentation. If Guymager is said to be stable
+   and user friendly it's because of Willi's unwearied work.
+
+Trevor Welsby
+   Thanks to Trevor, Guymager has a few bugs less and includes some new
+   features (SHA1 support and relative paths). Trevor submitted his bug reports
+   and feature requests together with suggestions for source code changes and
+   thus made the necessary changes in the main trunk really easy.

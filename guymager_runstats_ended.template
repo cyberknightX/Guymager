@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <script type="text/JavaScript">
+      function timedRefresh(timeoutPeriod)
+      {
+         setTimeout("location.reload(true);",timeoutPeriod);
+      }
+   </script>
+</head>
+
+<body onload="JavaScript:timedRefresh(5000);">
+Guymager status information<br/>
+Hostname: %HostName%<br/>
+Guymager is currently not running.
+Last usage: %dddd%, %d%. %MMMM% %yyyy% %h%:%mm%:%ss%<br/><br/>
+
+</body>
+</html>

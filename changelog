@@ -1,0 +1,555 @@
+guymager-beta (0.8.13-1) unstable; urgency=low
+   * Querying CID data for SD memory cards (DeviceInfoCommands in guymager.cfg)
+   * String of OS version in corresponding EWF field now corresponds to the
+     output of "uname -r" in order to circumvent Encase bugs.
+ -- Guy Voncken <develop@faert.net>  Thu, 04 Aug 2021 19:00:00 +0200
+
+guymager-beta (0.8.12-1) unstable; urgency=low
+   * Avoiding error "flexible array member ... ~not at end of ..." in newer
+     gcc versions.
+   * Removed bug where acquisition state never changed from "Launch" to
+     "Acquire" for special devices
+ -- Guy Voncken <develop@faert.net>  Sat, 02 May 2020 19:00:00 +0200
+
+guymager-beta (0.8.11-1) unstable; urgency=low
+   * Added configuration check for invalid EwfFormat/EwfCompression setting
+ -- Guy Voncken <develop@faert.net>  Wed, 26 Jun 2019 11:00:00 +0200
+
+guymager-beta (0.8.10-1) unstable; urgency=low
+   * Removed a bug where verification failed if EwfFormat set to something
+     different than Guymager and segmentation beyond .EZZ
+ -- Guy Voncken <develop@faert.net>  Mon, 27 May 2019 16:00:00 +0100
+
+guymager-beta (0.8.9-1) unstable; urgency=low
+   * New cfg parameter DeleteAbortedImageFiles
+   * Removed a bug where a AEWF file open error would escalate to program exit.
+   * Checking and detecting possible devices changes upon acquisition start.
+   * Total acquisition speed displayed in info field
+   * Cleanup for C++14
+ -- Guy Voncken <develop@faert.net>  Thu, 30 Aug 2018 16:00:00 +0100
+
+guymager-beta (0.8.8-1) unstable; urgency=low
+   * Using pkexec instead of gksudo
+   * New compile option ENABLE_LIBEWF
+ -- Guy Voncken <develop@faert.net>  Wed, 24 Jan 2018 16:00:00 +0100
+
+guymager-beta (0.8.7-1) unstable; urgency=low
+   * Typing errors corrected
+ -- Guy Voncken <develop@faert.net>  Fri, 22 Sep 2017 10:00:00 +0200
+
+guymager-beta (0.8.6-1) unstable; urgency=low
+   * Upon disconnection of device, do not pause verification if it is done
+     on the image only (pausing still for source verifications).
+   * New cfg parameter AdditionalStateInfoName
+   * System signal HUP triggers device rescanning
+   * Special tokens %UserField% and %AddStateInfo% added
+ -- Guy Voncken <develop@faert.net>  Fri, 11 Aug 2017 11:00:00 +0200
+
+guymager-beta (0.8.5-1) unstable; urgency=low
+   * New cfg parameters BadSectorLogThreshold and BadSectorLogModulo.
+ -- Guy Voncken <develop@faert.net>  Wed, 26 Apr 2017 11:00:00 +0200
+
+guymager-beta (0.8.4-1) unstable; urgency=low
+   * Removed bug that occurred if remaining time was longer than 99 hours
+   * Adapted to gcc7
+ -- Guy Voncken <develop@faert.net>  Thu, 02 Feb 2017 17:00:00 +0100
+
+guymager-beta (0.8.3-1) unstable; urgency=low
+   * Corrected bug where Guymager not always recognised if duplicate image or
+     info file was the same as first one.
+   * In the duplicate acquisition dialog mark the device selected in the first
+     acquisition dialog and make it unselectable.
+   * New features in acquisition dialog: Allow relative paths in filenames,
+     allow direct editing of directory fields. See new configuration parameters
+     DirectoryFieldEditing, AllowPathInFilename and ConfirmDirectoryCreation.
+   * Forbid overwriting image / info files of other acquisitions (up until now,
+     only an warning was shown that could have been ignored by the user).
+ -- Guy Voncken <develop@faert.net>  Fri, 05 Aug 2016 15:00:00 +0200
+
+guymager-beta (0.8.2-1) unstable; urgency=low
+   * Support for SHA1 checksum in EWF images (for AEWF and LIBEWF)
+   * Corrected bug where directory button in dlgacquire would be drawn
+     half underneath entry field for certain configuration settings.
+   * Corrected bug where %SizeHumanNoSep% behaved the same as %SizeHuman%
+ -- Guy Voncken <develop@faert.net>  Wed, 15 Apr 2016 16:00:00 +0200
+
+guymager-beta (0.8.1-1) unstable; urgency=low
+  * New DeviceScanMethod libudev
+  * Adapted to Qt 5 API
+  * For computers with non standard mouse: Double click open context menu
+  * New configuration parameter AvoidCifsProblems
+  * Show version number in main window title bar
+  * Debug CIFS flcose problem
+  * Added EWFX support from libewf
+ -- Guy Voncken <develop@faert.net>  Wed, 09 Mar 2016 12:00:00 +0100
+
+guymager-beta (0.7.6-1) unstable; urgency=low
+  * Additional log output for fclose problem on Samba (cases) share
+ -- Guy Voncken <develop@faert.net>  Thu, 29 Jul 2015 14:00:00 +0200
+
+guymager-beta (0.7.5-1) unstable; urgency=low
+  * Bug fixed where we could run out of FIFO blocks in extremely rare
+    conditions (ERROR_FIFO_MALLOC_FAILED)
+ -- Guy Voncken <develop@faert.net>  Tue, 05 May 2015 10:00:00 +0200
+
+guymager-beta (0.7.4-1) unstable; urgency=low
+  * Added output for hostname, domainname and system to info file
+  * New cfg param InfoFieldsForDd
+  * Corrected bug: DisconnectTimeout only must be active if LimitJobs is active
+  * libewf version check changed, all versions >= 20130416 are accepted
+ -- Guy Voncken <develop@faert.net>  Tue, 09 Sep 2014 10:30:00 +0200
+
+guymager-beta (0.7.3a-1) unstable; urgency=low
+  * New cfg parameter InfoFieldsForDd
+ -- Guy Voncken <develop@faert.net>  Fri, 10 Feb 2014 15:30:00 +0100
+
+guymager-beta (0.7.3-1) unstable; urgency=low
+  * Removed logical image format LVF
+  * Following patches by Thorsten Glaser <tg@mirbsd.de>, adapted by Guy:
+    Add new libewf formats: Encase7, Linen6, Linen7
+    Port to newer libewf API to fix FTBFS (Closes: #729651)
+  * Removed bug when SHA1 was the only selected hash algorithm
+  * Wrong NativePath, ByPath and Interface display when moving device
+    from one port to another without refreshing device list in between.
+  * New cfg parameter AffEnabled
+ -- Guy Voncken <develop@faert.net>  Fri, 17 Dec 2014 16:00:00 +0100
+
+guymager-beta (0.7.2-1) unstable; urgency=low
+  * Adding support for empty block compression
+  * GUI Status text corrected when all verfications are off
+  * Scanning also /usr/lib64 for libparted
+  * New screen columns NativePath, ByPath and Interface adedd
+  * RegExp search for hidden and local devices adedd
+ -- Guy Voncken <develop@faert.net>  Wed, 12 Dec 2013 09:00:00 +0100
+
+guymager-beta (0.7.1-1) unstable; urgency=low
+  * Duplicate image creation
+  * New RunStats module
+  * New job queue mechanism
+  * New userfield
+  * New configuration table for main Guymager table
+  * New font configuration
+  * New cfg table HiddenDevices
+  * New configuration parameter CommandAcquisitionEnd
+  * Writing hidden area info into info file
+  * Gray out rescan button when scan is running
+  * In order to avoid the "contagious error", DirectIO is switched on
+    in fallback mode.
+  * Removed race condition where write thread would write hash into image
+    before it has been calculated by hash thread.
+  * SHA-1 support added
+ -- Guy Voncken <develop@faert.net>  Thu, 15 Mar 2013 16:45:00 +0100
+
+guymager-beta (0.6.13-1) unstable; urgency=low
+  * Package dependency to udisks added (for recent Ubuntu)
+  * libparted search extended to subdirs
+  * Added cfg parameter ForceCommandGetSerialNumber
+ -- Guy Voncken <develop@faert.net>  Thu, 27 Dec 2012 11:00:00 +0100
+
+guymager-beta (0.6.12-1) unstable; urgency=low
+  * Avoiding -O3 / inline compiler bug
+  * Correct srceen output if no log file is in use
+  * DD verification: retry with NOATIME switched off if open fails
+  * DD verification: Do not exit if open fails
+ -- Guy Voncken <develop@faert.net>  Thu, 30 Jul 2012 17:00:00 +0200
+
+guymager-beta (0.6.11-1) unstable; urgency=low
+  * Releasing changes of 0.6.10
+ -- Guy Voncken <develop@faert.net>  Thu, 12 Jul 2012 11:30:00 +0200
+
+guymager-beta (0.6.10-1) unstable; urgency=low
+  * Removed bug where section tables might contain only one entry.
+  * New cfg parameter EwfNaming supports 2 methods for naming EWF segment files
+  * Added warnings for low space on destination path and large number of image
+    files before starting acquisition, new configuration parameters
+    WarnAboutImageSize and WarnAboutSegmentFileCount
+  * When opening destination image fails, retry with NOATIME switched off (thus
+    enabling cloning without root rights)
+ -- Guy Voncken <develop@faert.net>  Fri, 4 Jul 2012 11:30:00 +0200
+
+guymager-beta (0.6.10-1) unstable; urgency=low
+  * Removed bug where section tables might contain only one entry.
+ -- Guy Voncken <develop@faert.net>  Thu, 12 Jul 2012 10:30:00 +0200
+
+guymager-beta (0.6.9-1) unstable; urgency=low
+  * Releasing all changes of 0.6.8 (switch to new version in order to have test
+    users update their packages correctly)
+ -- Guy Voncken <develop@faert.net>  Fri, 29 Jun 2012 15:30:00 +0200
+
+guymager-beta (0.6.8-1) unstable; urgency=low
+  * AEWF: Considering also 1st chunk base offset when checking if chunk can be
+    added to current sectors section.
+  * New cfg parameter CheckRootRights
+  * If source disk can't be opened, give it another try without option NOATIME
+  * Corrected text output for image hash calculation in info file; Translations
+    updated.
+  * Error in UtilIsZero removed (leading to wrong image if FifoBlockSizeEwf is
+    set to values above 65536)
+  * Package no longer recommends gksu, smartmontools and hdparm but depends on
+    them
+  * No longer exits on write errors on info file or in AEWF module (should
+    already have been done in 0.6.4, but the takeover from trunk wasn't done)
+  * New cfg parameter EwfCompressionThreshold
+  * Also include symlinks when searching for libparted
+  * Changes from Mika (unistd.h)
+ -- Guy Voncken <develop@faert.net>  Fri, 29 Jun 2012 15:00:00 +0200
+
+guymager-beta (0.6.7-1) unstable; urgency=low
+  * Configuration parameter CommandGetAddStateInfo now understands placeholder
+    %local for distinguishing between local and non-local devices.
+  * New configuration parameter QueryDeviceMediaInfo for devices that do not
+    like HPA/DCO querying
+  * MD5 calculation of destination disk corrected for disks whose size is not
+    a multiple of the block size
+ -- Guy Voncken <develop@faert.net>  Mon, 30 Apr 2012 14:00:00 +0200
+
+guymager-beta (0.6.6-1) unstable; urgency=low
+  * no longer depends on libproc (using libc functions instead)
+  * New, fast SHA256 and MD5 routines (from package coreutils)
+  * No longer depends on libcrypto or libcrypto for fast hash functions
+ -- Guy Voncken <develop@faert.net>  Fri, 12 Mar 2012 14:15:00 +0100
+
+guymager-beta (0.6.5-1) unstable; urgency=low
+  * Device scan: Assume that a device will not be included more than once
+    in a scan
+  * New CFG parameter AvoidEncaseProblems for Encase EWF string limitations
+ -- Guy Voncken <develop@faert.net>  Fri, 06 Feb 2012 16:00:00 +0100
+
+guymager-beta (0.6.4-1) unstable; urgency=low
+  * No longer exits on write errors in AEWF module
+  * No longer exits on info file write errors
+  * Center info dialog relative to application (not screen)
+ -- Guy Voncken <develop@faert.net>  Fri, 30 Dec 2011 14:00:00 +0100
+
+guymager-beta (0.6.3-1) unstable; urgency=low
+  * Compressed chunks must be smaller than uncompressed chunks without the CRC,
+    or else Encase fails
+ -- Guy Voncken <develop@faert.net>  Thu, 7 Dec 2011 14:00:00 +0100
+
+guymager-beta (0.6.2-1) unstable; urgency=low
+  * Better HPA/DCO log output
+ -- Guy Voncken <develop@faert.net>  Thu, 1 Dec 2011 15:00:00 +0100
+
+guymager-beta (0.6.1-1) unstable; urgency=low
+  * New branch for 0.6 release
+ -- Guy Voncken <develop@faert.net>  Wed, 2 Nov 2011 15:00:00 +0100
+
+guymager-beta (0.6.0beta8-1) unstable; urgency=low
+  * Bug removed where acquisition hash codes were not shown in info file
+    if verification was aborted.
+ -- Guy Voncken <develop@faert.net>  Thu, 20 Oct 2011 15:30:00 +0200
+
+guymager-beta (0.6.0beta7-1) unstable; urgency=low
+  * Additional State Info added
+  * zlib zero block compression / decompression optimised
+ -- Guy Voncken <develop@faert.net>  Mon, 17 Oct 2011 14:30:00 +0200
+
+guymager-beta (0.6.0beta6-1) unstable; urgency=low
+  * New configuration parameter DirectIO
+ -- Guy Voncken <develop@faert.net>  Tue, 08 Sep 2011 11:30:00 +0200
+
+guymager-beta (0.6.0beta5-1) unstable; urgency=low
+  * Setting sectors per chunk correctly for libewf
+ -- Guy Voncken <develop@faert.net>  Tue, 06 Sep 2011 14:30:00 +0200
+
+guymager-beta (0.6.0beta4-1) unstable; urgency=low
+  * Removed full path of image file names from .info file, only show the
+    image filename
+  * Bug removal: pDevice->ImageFilehashList was not cleared after acquisition
+ -- Guy Voncken <develop@faert.net>  Tue, 06 Sep 2011 12:00:00 +0200
+
+guymager-beta (0.6.0beta3-1) unstable; urgency=low
+  * New thread debugging messages
+ -- Guy Voncken <develop@faert.net>  Tue, 05 Sep 2011 14:00:00 +0200
+
+guymager-beta (0.6.0beta2-1) unstable; urgency=low
+  * New EWF module reduces memory footprint significantly.
+  * Posibility to compute MD5 hashes of the individual image files and write
+    them to the .info file.
+  * Better log output always contains acquired device
+  * Bug removed where libewf only did empty block compression (slight API
+    change in libewf20100226)
+ -- Guy Voncken <develop@faert.net>  Tue, 01 Sep 2011 14:00:00 +0200
+
+guymager-beta (0.6.0beta1-1) unstable; urgency=low
+  * Compression problem with libewf20100226 fixed
+  * Wrong file size check in acquisition dialog corrected
+ -- Guy Voncken <develop@faert.net>  Tue, 23 Aug 2011 10:00:00 +0200
+
+guymager-beta (0.5.9-1) unstable; urgency=low
+  * Releasing 0.5.8beta10-1 as 0.5.9
+ -- Guy Voncken <develop@faert.net>  Thu, 07 Jul 2011 16:00:00 +0200
+
+guymager-beta (0.5.8beta10-1) unstable; urgency=low
+  * CREDITS updated
+  * guymager.desktop corrected
+  * Recommends gksu because of new menu entry
+  * Officialy released as 0.5.9
+ -- Guy Voncken <develop@faert.net>  Thu, 07 Jul 2011 16:00:00 +0200
+
+guymager-beta (0.5.8beta9-1) unstable; urgency=low
+  * Copyright and Credits adapted/added
+ -- Guy Voncken <develop@faert.net>  Fri, 01 Jul 2011 12:15:00 +0200
+
+guymager-beta (0.5.8beta8-1) unstable; urgency=low
+  * Menu entry and icon
+ -- Guy Voncken <develop@faert.net>  Tue, 30 Jun 2011 16:55:00 +0200
+
+guymager-beta (0.5.8beta7-1) unstable; urgency=low
+  * Create destination directory if it does not exist (recursively)
+ -- Guy Voncken <develop@faert.net>  Tue, 29 Jun 2011 16:30:00 +0200
+
+guymager-beta (0.5.8beta6-1) unstable; urgency=low
+  * Moved to libewf20100226
+  * Allow EWF files above 2GB
+ -- Guy Voncken <develop@faert.net>  Tue, 28 Jun 2011 14:00:00 +0200
+
+guymager-beta (0.5.8beta5-2) unstable; urgency=low
+  * Special version for debugging serial nr. problem (Th. Schwarze)
+ -- Guy Voncken <develop@faert.net>  Wed, 16 Feb 2011 14:00:00 +0100
+
+guymager-beta (0.5.8beta5-1) unstable; urgency=low
+  * Reading out sector size if using UDisks and writing it correctly to EWF files.
+ -- Guy Voncken <develop@faert.net>  Wed, 11 Feb 2011 10:00:00 +0100
+
+guymager-beta (0.5.8beta4-1) unstable; urgency=low
+  * Do not Autoexit if there's an acquisition aborted because of errors (user aborts are ok)
+  * Try to start Kubuntu's udisk daemon by accessing it, only then check if it's up and running
+ -- Guy Voncken <develop@faert.net>  Tue, 25 Jan 2011 11:30:00 +0100
+
+guymager-beta (0.5.8beta3-1) unstable; urgency=low
+  * AutoExit behaviour corrected in case of user abort
+  * Returning correct exit code
+ -- Guy Voncken <develop@faert.net>  Mon, 20 Dec 2010 12:00:00 +0100
+
+guymager-beta (0.5.8beta2-1) unstable; urgency=low
+  * write fifo no longer shows the dummy blocks it still contains while image verification
+  * man pages updated
+  * Special exit code 1 upon AutoExit
+  * Default AFF block size set to 64K
+ -- Guy Voncken <develop@faert.net>  Mon, 20 Dec 2010 11:30:00 +0100
+
+guymager-beta (0.5.8beta1-1) unstable; urgency=low
+  * Autoexit feature added
+  * Copyright information integrated correctly into source code (thanks to Mika)
+  * Compiler/assembler problems for Ubuntu 10.10 removed
+ -- Guy Voncken <develop@faert.net>  Wed, 6 Oct 2010 11:30:00 +0200
+
+guymager-beta (0.5.7beta2-1) unstable; urgency=low
+  * Memory leak in FIFO buffer removed
+  * Module MemWatch removed (use valgrind instead)
+ -- Guy Voncken <develop@faert.net>  Tue, 14 Sep 2010 10:00:00 +0200
+
+guymager-beta (0.5.7beta1-1) unstable; urgency=low
+  * Fixed a bug where Guymager refused to add 2 special devices of the same
+    size.
+ -- Guy Voncken <develop@faert.net>  Mon, 30 Aug 2010 14:45:00 +0200
+
+guymager-beta (0.5.6beta1-1) unstable; urgency=low
+  * Using min. 3 digits for split dd file extension
+  * Treating file open error in ThreadWrite as a problem and not as a reason
+    for ending Guymager
+  * Removed bug in acquisition dialog with unsplit dd image
+ -- Guy Voncken <develop@faert.net>  Mon, 09 Aug 2010 10:30:00 +0200
+
+guymager-beta (0.5.5beta1-1) unstable; urgency=low
+  * Language files updated
+  * Bug in clone dialog removed (segfault when pressing ok)
+  * The acquire dialog is no longer limited to 2/3 of the screen when first
+    opened.
+ -- Guy Voncken <develop@faert.net>  Fri, 06 Aug 2010 14:15:00 +0200
+
+guymager-beta (0.5.4beta1-1) unstable; urgency=low
+  * Supporting split dd images
+ -- Guy Voncken <develop@faert.net>  Tue, 03 Aug 2010 11:15:00 +0200
+
+guymager-beta (0.5.3beta1-1) unstable; urgency=low
+  * First official beta release of guymager-beta
+ -- Guy Voncken <develop@faert.net>  Mon, 02 May 2010 15:15:00 +0200
+
+guymager-beta (0.5.1beta11-1) unstable; urgency=low
+  * Show config errors on console
+  * DeviceKit now is named UDisks in Ubuntu 10.04
+  * Clone dialog resized
+  * Package dependencies debugged
+ -- Guy Voncken <develop@faert.net>  Mon, 02 May 2010 11:45:00 +0200
+
+guymager-beta (0.5.1beta10-1) unstable; urgency=low
+  * New guymager-beta package
+  * Preparations for split dd images (not finished yet)
+ -- Guy Voncken <develop@faert.net>  Fri, 30 Apr 2010 16:45:00 +0200
+
+guymager (0.5.1beta9-0) unstable; urgency=low
+  * Acquisition dialog made scrollable (for low resolution screens)
+ -- Guy Voncken <develop@faert.net>  Fri, 24 Mar 2010 16:00:00 +0100
+
+guymager (0.5.1beta8-0) unstable; urgency=low
+  * Corrected bug where acquisition hangs on write errros
+  * Checking also device model for checking if it is a local device
+  * Debug clone function
+ -- Guy Voncken <develop@faert.net>  Fri, 09 Mar 2010 11:45:00 +0100
+
+guymager (0.5.1beta7-0) unstable; urgency=low
+  * Device cloning added
+ -- Guy Voncken <develop@faert.net>  Fri, 26 Feb 2010 09:30:00 +0100
+
+guymager (0.5.1beta6-0) unstable; urgency=low
+  * Direct read mode for source device
+  * If special device size unknown, try seek_end to get it
+  * Debugged of checking if special device already there
+ -- Guy Voncken <develop@faert.net>  Thu, 4 Feb 2010 15:06:11 +0100
+
+guymager (0.5.1beta5-0) unstable; urgency=low
+  * Special devices added
+  * Writing image meta data (case number, examiner, ...) to info file
+  * Own memory manager for FIFO queues
+ -- Guy Voncken <develop@faert.net>  Fri, 8 Dec 2009 15:06:11 +0100
+
+guymager (0.5.1beta4-0) unstable; urgency=low
+  * Bug in file name check / test file access removed
+ -- Guy Voncken <develop@faert.net>  Mon, 8 Dec 2009 11:00:00 +0100
+
+guymager (0.5.1beta3-0) unstable; urgency=low
+  * New search method for finding libparted
+  * Checkbox fields in acquisition dialog now fully configurable
+ -- Guy Voncken <develop@faert.net>  Mon, 7 Dec 2009 10:00:00 +0100
+
+guymager (0.5.1beta2-0) unstable; urgency=low
+  * Image verification added (for all formats: aff, ewf and dd)
+  * Support for DeviceKit-Disks (thanks -> Daniel Gillen)
+  * Small bug in acquisition dialog removed
+ -- Guy Voncken <develop@faert.net>  Tue, 8 Nov 2009 08:30:00 +0200
+
+guymager (0.5.1beta1-0) unstable; urgency=low
+  * Reading HPA/DCO information (only for displaying)
+  * EWF sub format Encase6 can now be selected
+  * Tests with libewf 2009xxxxbeta (EWF call sequence changed to avoid libwf
+    bug)
+ -- Guy Voncken <develop@faert.net>  Thu, 8 Oct 2009 14:00:00 +0200
+
+guymager (0.5.0beta1-0) unstable; urgency=low
+  * Code cosmetics
+  * MD5 and SHA256 calculation can be seprately switched on/off
+  * No direct usage of libparted any longer, loading it dynamically instead
+  * Allowing to switch over to libparted (DBus) in case of failure of DBus
+    (libparted)
+  * Releasing all this as Guymager 0.4.2
+ -- Guy Voncken <develop@faert.net>  Fri, 25 Sep 2009 09:00:00 +0200
+
+guymager (0.4.0beta12) unstable; urgency=low
+  * Better device detection when using HAL
+  * Automatic language selection
+  * Checking for write access on destination path before starting acquisition
+  * Locale clean up
+  * More precise size display; using SI units for sizes
+  * Info area updated (showing start timestamp and running time)
+  * %size% parameter (cfgtable DlgAcquireField) unit switch changed
+ -- Guy Voncken <develop@faert.net>  Thu, 13 Aug 2009 14:00:00 +0200
+
+guymager (0.4.0beta11) unstable; urgency=low
+  * afflib removed, using own aaff code instead
+  * optimised sha256 calculation
+ -- Guy Voncken <develop@faert.net>  Fri, 31 Jul 2009 16:00:00 +0200
+
+guymager (0.4.0beta10) unstable; urgency=low
+  * Flushing dd data before closing file
+  * Fifo size calculation reviewed
+ -- Guy Voncken <develop@faert.net>  Thu, 23 Apr 2009 17:00:00 +0200
+
+guymager (0.4.0beta9) unstable; urgency=low
+  * Debug aff parallelised compression
+  * Ask before overwriting image files
+  * New cfg params FifoBlockSizeDD, FifoBlockSizeEWF and FifoBlockSizeAFF
+  * New cfg param FifoMaxMem and automatic fifo queue size calculation
+  * Fixed a bug where Guymager crashed if several configuration parameters
+    where given on the command line
+ -- Guy Voncken <develop@faert.net>  Thu, 16 Apr 2009 16:00:00 +0200
+
+guymager (0.4.0beta8) unstable; urgency=low
+  * Using libaff with parallelised compression
+ -- Guy Voncken <develop@faert.net>  Mon, 07 Apr 2009 10:00:00 +0200
+
+guymager (0.4.0beta7) unstable; urgency=low
+  * Info directory bug removed
+  * New cfg parameter AffCompression
+ -- Guy Voncken <develop@faert.net>  Mon, 30 Mar 2009 15:00:00 +0200
+
+guymager (0.4.0beta6) unstable; urgency=low
+  * Support for SHA256
+ -- Guy Voncken <develop@faert.net>  Fri, 02 Jan 2009 14:30:00 +0200
+
+guymager (0.4.0beta5) unstable; urgency=low
+  * New cfg param CheckEwfData
+  * Cfg param EwfSegmentSize limited to 2047
+ -- Guy Voncken <develop@faert.net>  Fri, 23 Dec 2008 14:30:00 +0200
+
+guymager (0.4.0beta4) unstable; urgency=low
+  * Supporting AFF format
+  * Treating image and info path separately
+ -- Guy Voncken <develop@faert.net>  Fri, 05 Dec 2008 14:30:00 +0200
+
+guymager (0.4.0beta3) unstable; urgency=low
+  * Hash comparison error
+  * Language files updated
+  * Suppports all EWF subformats included in libewf
+  * Info and image paths treatted separately
+ -- Guy Voncken <develop@faert.net>  Fri, 10 Oct 2008 14:30:00 +0200
+
+guymager (0.4.0beta2) unstable; urgency=low
+  * MD5-Verification added (Source device read 2 times if enabled)
+  * Using minimal display width for certain columnns
+  * New command in cfg-table DeviceInfoCommands for detecting (maybe) HPAs
+  * Circle with configurable color for acquisition state field
+ -- Guy Voncken <develop@faert.net>  Wed, 01 Oct 2008 11:00:00 +0200
+
+guymager (0.4.0beta1) unstable; urgency=low
+  * Own MD5 functions added (copied from fdupes) in order to avoid other
+    dependencies
+  * Linking libparted statically to avoid dependency problems
+  * Missing build dependency for libqt4-dev added
+ -- Guy Voncken <develop@faert.net>  Tue, 16 Sep 2008 09:45:00 +0200
+
+guymager (0.3.0beta3) unstable; urgency=low
+  * Several things concerning Debian packaging
+  * New, flexible handling for acquisition dialog fields
+  * Language support
+ -- Guy Voncken <develop@faert.net>  Tue, 09 Sep 2008 17:15:00 +0200
+
+guymager (0.3.0beta2) unstable; urgency=low
+  * New cfg param SpecialFilenameChars for allowing special chars in image and
+    info filenames
+  * Writing version info also to log file
+  * Auto-detect number of CPUs for optimal multi-threaded compression
+  * Special sequence %size% in cfg file expands to non fractional value
+ -- Guy Voncken <develop@faert.net>  Tue, 02 Sep 2008 15:00:00 +0200
+
+guymager (0.3.0beta1) unstable; urgency=low
+  * Possibility to chose between self-written or Qt file dialog (cfg param
+    UseFileDialogFromQt)
+  * Correct display of libewf version in use
+  * Device matching on device rescan corrected (as some memsticks behave like 2
+    devices with identical serial nr.)
+  * When starting without root rights: Ask user if he really wants this
+ -- Guy Voncken <develop@faert.net>  Tue, 15 Apr 2008 12:00:00 +0200
+
+guymager (0.2.0beta3) unstable; urgency=low
+  * Locale initialisation added
+  * MemWatch really switched off if UseMemWatch is false
+  * Simplified compilation
+  * Man page added
+  * Debian package corrections (lintian no longer reports errors)
+ -- Guy Voncken <develop@faert.net>  Tue, 01 Apr 2008 15:15:00 +0200
+
+guymager (0.2.0beta2) unstable; urgency=low
+  * Current unstable
+ -- Guy Voncken <develop@faert.net>  Tue, 01 Apr 2008 15:15:00 +0200
+
+guymager (0.2.0beta1) unstable; urgency=low
+  * Current unstable
+ -- Guy Voncken <develop@faert.net>  Fri, 21 Mar 2008 08:00:00 +0200
+
+
+guymager (0.1.0-1) unstable; urgency=low
+  * First official branch, released for "BKA-Fachtagung forensische IuK",
+    18-19 Sept. 2007, D-Knuellwald.
+ -- Guy Voncken <develop@faert.net>  Wed, 12 Sep 2007 16:00:19 +0200

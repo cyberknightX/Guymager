@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<style type="text/css">
+   #maintable
+   {
+      background-color: whiteSmoke;
+      border-collapse:collapse;
+      border-radius: 6px;
+   }
+
+   #maintable td, #maintable th
+   {
+      padding: 5px 10px;
+      font-family: Helvetica, Arial, sans-serif;
+      border: 1px solid lightgray;
+   }
+
+   #maintable th
+   {
+      color: #333;
+      font-size: 16px;
+      text-align: center;
+   }
+
+   #maintable tr
+   {
+      line-height: 20px;
+      font-size: 14px;
+   }
+
+   #maintable tr.LocalDeviceNO
+   {
+      color: #0064A4;
+   }
+
+   #maintable tr.LocalDeviceYES
+   {
+      color: #C02020;
+   }
+
+   #maintable td.RightAligned
+   {
+      text-align: right;
+   }
+
+   #maintable td:hover
+   {
+      background-color: #fff;
+   }
+</style>
+
+<head>
+   <script type="text/JavaScript">
+      function timedRefresh(timeoutPeriod)
+      {
+         setTimeout("location.reload(true);",timeoutPeriod);
+      }
+   </script>
+</head>
+
+<body onload="JavaScript:timedRefresh(5000);">
+Guymager status information<br/>
+Hostname: %HostName%<br/>
+Last Updated: %dddd%, %d%. %MMMM% %yyyy% %h%:%mm%:%ss%<br/>
+Version: %Version%<br/><br/>
+
+<table id="maintable">
+   <thead>
+      <th>Serial</th>
+      <th>Linux<br/>device</th>
+      <th>Model</th>
+      <th>State</th>
+      <th>Size</th>
+      <th>Progress<br/>[%]</th>
+      <th>Current speed<br/>[MB/s]</th>
+      <th>Average speed<br/>[MB/s]</th>
+      <th>Time<br/>remaining</th>
+      <th>Bad<br/>sectors</th>
+      <th>Examiner</th>
+      <th>Case<br/>number</th>
+   </thead>
+   <tbody>
+      %DEVICE_BLOCK%
+      <tr class="LocalDevice%LocalDevice%">
+         <td>%Serial%</td>
+         <td>%Dev%</td>
+         <td>%Model%</td>
+         <td>%State%</td>
+         <td class="RightAligned">%SizeHuman%</td>
+         <td class="RightAligned">%Progress%</td>
+         <td class="RightAligned">%CurrentSpeed%</td>
+         <td class="RightAligned">%AverageSpeed%</td>
+         <td class="RightAligned">%TimeRemaining%</td>
+         <td class="RightAligned">%BadSectors%</td>
+         <td>%Examiner%</td>
+         <td>%CaseNumber%</td>
+      </tr>
+      %DEVICE_BLOCK%
+   </tbody>
+</table>
+
+</body>
+</html>
