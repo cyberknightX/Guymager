@@ -1,0 +1,57 @@
+.SH NAME
+guymager \- a forensic acquisition program
+.SH SYNOPSIS
+.B guymager
+[\fBlog=\fIlog_file\fR]
+[\fBcfg=\fIconfiguration_file\fR]
+[options]
+.SH DESCRIPTION
+Guymager is a Qt-based forensic imager. It is capable of producing image files in EWF, AFF 
+and dd format. Its main strenghs are the easy user interface, the high imaging speed and the
+extended acquisition info file.
+.PP
+The internal structure is based on separate threads for reading, hash calculation (MD5 and 
+SHA256), writing and includes a parallelised compression engine, thus making full usage of 
+multi\-processor and hyper\-threading machines.
+.PP
+Guymager should be run with root privileges, as other users do not have access to physical
+devices normally.
+.SH OPTIONS
+.TP
+.BI log= "log_file"
+By default, guymager uses /var/log/guymager.log as its log file. This option allows for
+specifying a different file.
+.TP
+.BI cfg= "configuration_file"
+The default configuration file is /etc/guymager/guymager.cfg. This option allows for
+specifying a different file. Guymager creates a template configuration file when the
+option
+.B \-cfg=template.cfg
+is given.
+.P
+All other configuration options may be specified on the command line and/or in the
+configuration file. See /etc/guymager/guymager.cfg for a description of all possible
+options. In case an option is specified in the configuration file and on the command
+line, the command line dominates.
+.SH EXIT CODES
+.TP
+Guymager normally returns an exit code of 0. Exit code 1 means that Guymager terminated because the AutoExit function became active. All other exit codes are related to internal Guymager or Qt errors.
+.SH EXAMPLES
+.TP
+Write all log entries to ./my.log:
+.B guymager
+log=my.log
+.TP
+Create a template configuration file
+.B guymager
+cfg=template.cfg
+.TP
+Read the configuration from my.cfg and use 4 threads for parallelised compression:
+.B guymager
+cfg=my.cfg CompressionThreads=4
+.P
+See /etc/guymager/guymager.cfg for details about option CompressionThreads and all
+other options as well.
+.SH AUTHOR
+Guy Voncken (develop (at) faert.net)
+
